@@ -100,67 +100,55 @@
     font-size: 1.4rem;
 }
 
-// .bottom-section {
-//     // Setting display of text to allow for multiple inline items later
-//     display: flex;
-//     // Setting text alignment and inherited items
-//     text-align: center;
-//     font-family: 'moneta';
-//     font-weight: 500;
-// }
-
-// .bottom-section h2 {
-//     // Setting font size of the headers
-//     font-size: 50px;
-//     // Setting inherited margins
-//     margin-top: 10%;
-//     margin-bottom: 10%;
-// }
-
-// .insights {
-//     // Justifing content to fit all three statistics in the same line
-//     justify-content: space-between;
-//     // Setting margins for information
-//     margin-top: 2%;
-// }
-
-// .insights-text {
-//     // Setting font size for text
-//     font-size: 20px;
-//     // Give a margin to the text so that it doesn't look too crammed
-// }
-
 .bottom-section {
+    // Setting display of text to allow for multiple inline items later
     display: flex;
     flex-direction: column;
+    // Setting text alignment and inherited items
     align-items: center;
     text-align: center;
     font-family: 'moneta';
     font-weight: 500;
-    padding: 30px; /* Add padding for spacing */
+    // Adding padding for spacing
+    padding: 50px;
 }
 
 .bottom-section h2 {
+    // Setting font size of the headers
     font-size: 50px;
-    margin-top: 8%;
-    margin-bottom: 4%;
+    // Setting inherited margins
+    margin-top: 7%;
+    margin-bottom: 2.5%;
 }
 
 .insights {
+    // Reiterating display in order to use justify-content
     display: flex;
-    flex-wrap: wrap; /* Allow for multiple items to wrap */
+    // Allow for multiple items to wrap
+    flex-wrap: wrap;
+    // Justifing content to fit all three statistics in the same line
     justify-content: space-between;
-    margin-top: 20px; /* Adjust margin for spacing */
+    // Adjust margin for spacing
+    margin-top: 20px;
 }
 
 .insights > div {
-    flex: 1; /* Distribute available space evenly among items */
-    margin: 10px; /* Adjust margins for spacing */
+    // Distribute available space evenly among items
+    flex: 1;
+    // Adjust margins for spacing
+    margin: 50px;
 }
 
 .insights-text {
-    font-size: 20px;
-    margin: 10px 0; /* Adjust margins for spacing */
+    // Set font size of text
+    font-size: 17px;
+    // Adjust margins for spacing
+    margin: 10px 0;
+}
+
+.read-more-btn-container {
+    // Backtracking some margin spacing to create a more compact look
+    margin-bottom: -3%;
 }
 
 

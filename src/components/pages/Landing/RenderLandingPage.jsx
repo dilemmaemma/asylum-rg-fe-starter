@@ -103,9 +103,9 @@ function RenderLandingPage(props) {
       </div>
       <div>
         {/* Bottom section of the Landing Page. Contains necessary statistics to highlight insights */}
-        {/* Bottom Section: Add code here for the graphs section for your first ticket */}
         <div className="bottom-section">
           <h2>Systemic Disparity Insights</h2>
+          {/* Insight portion that shows the statistical representation of the graphs */}
           <div className="insights">
             <div>
               <h2>36%</h2>
@@ -131,14 +131,17 @@ function RenderLandingPage(props) {
               </p>
             </div>
           </div>
-          <Button
-            type="default"
-            style={{ backgroundColor: '#404C4A', color: '#FFFFFF' }}
-            // This button should not take the user anywhere yet, so the onClick is commented out
-            // onClick={() => history.push('/graphs')}
-          >
-            Read More
-          </Button>
+          {/* Button container to control margin of the 'Read More' button */}
+          <div className="read-more-btn-container">
+            <Button
+              type="default"
+              style={{ backgroundColor: '#404C4A', color: '#FFFFFF' }}
+              // This button should not take the user anywhere yet, so the onClick is commented out
+              // onClick={() => history.push('/graphs')}
+            >
+              Read More
+            </Button>
+          </div>
         </div>
         <p onClick={() => scrollToTop()} className="back-to-top">
           Back To Top ^
