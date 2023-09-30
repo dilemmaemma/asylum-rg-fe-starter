@@ -53,8 +53,10 @@
 .graph-text {
     // Align the text under each graphical image to make things look neater
     text-align: center;
+    // Setting font, font size, and font weight for text
     font-size: 20px;
     font-family: 'moneta';
+    font-weight: 500;
     // Give a margin to the text so that it doesn't look too crammed
     margin-top: 7%;
 }
@@ -99,8 +101,68 @@
 }
 
 // .bottom-section {
-//      ADD THIS BACK IN WHEN YOU HAVE A BOTTOM SECTION
+//     // Setting display of text to allow for multiple inline items later
+//     display: flex;
+//     // Setting text alignment and inherited items
+//     text-align: center;
+//     font-family: 'moneta';
+//     font-weight: 500;
 // }
+
+// .bottom-section h2 {
+//     // Setting font size of the headers
+//     font-size: 50px;
+//     // Setting inherited margins
+//     margin-top: 10%;
+//     margin-bottom: 10%;
+// }
+
+// .insights {
+//     // Justifing content to fit all three statistics in the same line
+//     justify-content: space-between;
+//     // Setting margins for information
+//     margin-top: 2%;
+// }
+
+// .insights-text {
+//     // Setting font size for text
+//     font-size: 20px;
+//     // Give a margin to the text so that it doesn't look too crammed
+// }
+
+.bottom-section {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    font-family: 'moneta';
+    font-weight: 500;
+    padding: 30px; /* Add padding for spacing */
+}
+
+.bottom-section h2 {
+    font-size: 50px;
+    margin-top: 8%;
+    margin-bottom: 4%;
+}
+
+.insights {
+    display: flex;
+    flex-wrap: wrap; /* Allow for multiple items to wrap */
+    justify-content: space-between;
+    margin-top: 20px; /* Adjust margin for spacing */
+}
+
+.insights > div {
+    flex: 1; /* Distribute available space evenly among items */
+    margin: 10px; /* Adjust margins for spacing */
+}
+
+.insights-text {
+    font-size: 20px;
+    margin: 10px 0; /* Adjust margins for spacing */
+}
+
 
 .back-to-top {
     width: 8%;
