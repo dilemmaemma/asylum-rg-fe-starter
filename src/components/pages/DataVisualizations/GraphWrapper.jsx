@@ -83,7 +83,6 @@ function GraphWrapper(props) {
           },
         })
         .then(result => {
-          console.log(result.data);
           stateSettingCallback(view, office, result.data); // Changed test_data to result.data
         })
         .catch(err => {
