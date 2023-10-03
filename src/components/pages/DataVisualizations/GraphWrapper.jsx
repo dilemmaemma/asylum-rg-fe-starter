@@ -10,7 +10,7 @@ import YearLimitsSelect from './YearLimitsSelect';
 import ViewSelect from './ViewSelect';
 import axios from 'axios';
 import { resetVisualizationQuery } from '../../../state/actionCreators';
-import test_data from '../../../data/test_data.json';
+// Removed test_data, as we are out of dev mode
 import { colors } from '../../../styles/data_vis_colors';
 import ScrollToTopOnMount from '../../../utils/scrollToTopOnMount';
 
@@ -75,23 +75,24 @@ function GraphWrapper(props) {
 
     if (office === 'all' || !office) {
       axios
-        .get(process.env.REACT_APP_API_URI, {
-          // mock URL, can be simply replaced by `${Real_Production_URL}/summary` in prod!
+        .get(`https://hrf-asylum-be-b.herokuapp.com/cases/citizenshipSummary`, {
+          // Changed mock URL, process.env.REACT_APP_API_URI, to ${Real_Production_URL}/summary
           params: {
             from: years[0],
             to: years[1],
           },
         })
         .then(result => {
-          stateSettingCallback(view, office, test_data); // <-- `test_data` here can be simply replaced by `result.data` in prod!
+          console.log(result.data);
+          stateSettingCallback(view, office, result.data); // Changed test_data to result.data
         })
         .catch(err => {
           console.error(err);
         });
     } else {
       axios
-        .get(process.env.REACT_APP_API_URI, {
-          // mock URL, can be simply replaced by `${Real_Production_URL}/summary` in prod!
+        .get(`https://hrf-asylum-be-b.herokuapp.com/cases/fiscalSummary`, {
+          // Changed mock URL, process.env.REACT_APP_API_URI, to ${Real_Production_URL}/summary
           params: {
             from: years[0],
             to: years[1],
@@ -99,7 +100,7 @@ function GraphWrapper(props) {
           },
         })
         .then(result => {
-          stateSettingCallback(view, office, test_data); // <-- `test_data` here can be simply replaced by `result.data` in prod!
+          stateSettingCallback(view, office, result.data); // Changed test_data to result.data
         })
         .catch(err => {
           console.error(err);
