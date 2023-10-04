@@ -7,8 +7,7 @@ Each asynchronous function should dispatch its action object (type/payload) to t
 import {
   SET_VISUALIZATION_DATA,
   SET_HEAT_MAP_YEARS,
-  RESET_CASE_DATA,
-  // RESET_VISUALIZATION_QUERY,
+  RESET_VISUALIZATION_QUERY,
   SET_DATE_FILTER_FORMAT,
 } from '../actionTypes';
 
@@ -25,8 +24,7 @@ export const setVisualizationData = (view, office, data) => {
 
 export const resetVisualizationQuery = (view, office) => {
   return {
-    // type: RESET_VISUALIZATION_QUERY <-- Mock
-    type: RESET_CASE_DATA,
+    type: RESET_VISUALIZATION_QUERY,
     payload: {
       view,
       office,

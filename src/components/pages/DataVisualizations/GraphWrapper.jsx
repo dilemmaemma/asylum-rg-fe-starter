@@ -53,62 +53,51 @@ function GraphWrapper(props) {
         break;
     }
   }
-  function updateStateWithNewData(years, view, office, stateSettingCallback) {
-    /*
-          _                                                                             _
-        |                                                                                 |
-        |   Example request for once the `/summary` endpoint is up and running:           |
-        |                                                                                 |
-        |     `${url}/summary?to=2022&from=2015&office=ZLA`                               |
-        |                                                                                 |
-        |     so in axios we will say:                                                    |
-        |                                                                                 |     
-        |       axios.get(`${url}/summary`, {                                             |
-        |         params: {                                                               |
-        |           from: <year_start>,                                                   |
-        |           to: <year_end>,                                                       |
-        |           office: <office>,       [ <-- this one is optional! when    ]         |
-        |         },                        [ querying by `all offices` there's ]         |
-        |       })                          [ no `office` param in the query    ]         |
-        |                                                                                 |
-          _                                                                             _
-                                   -- Mack 
-    
-    */
+  async function updateStateWithNewData(
+    years,
+    view,
+    office,
+    stateSettingCallback
+  ) {
+    const URL = 'https://hrf-asylum-be-b.herokuapp.com/cases';
 
     if (office === 'all' || !office) {
-      axios
-        .get(`https://hrf-asylum-be-b.herokuapp.com/cases/fiscalSummary`, {
-          // Changed mock URL, process.env.REACT_APP_API_URI, to ${Real_Production_URL}/summary
+      // Using Promise.all to make multiple asynchronous API requests concurrently.
+      Promise.all([
+        await axios.get(`${URL}/fiscalSummary`, {
+          // Passing parameters to the API request to filter data by year.
           params: {
             from: years[0],
             to: years[1],
           },
-        })
-        .then(result => {
-          stateSettingCallback(view, office, result.data); // Changed test_data to result.data
-        })
-        .catch(err => {
-          console.error(err);
-        });
-    } else {
-      axios
-        .get(`https://hrf-asylum-be-b.herokuapp.com/cases/citizenshipSummary`, {
-          // Changed mock URL, process.env.REACT_APP_API_URI, to ${Real_Production_URL}/summary
+        }),
+
+        await axios.get(`${URL}/citizenshipSummary`, {
           params: {
             from: years[0],
             to: years[1],
             office: office,
           },
-        })
-        .then(result => {
-          stateSettingCallback(view, office, result.data); // Changed test_data to result.data
+        }),
+      ])
+
+        .then(([callA, callB]) => {
+          const yearResults = callA.data.yearResults;
+
+          const citizenshipResults = callB.data;
+
+          // Combining the extracted data into an array of objects.
+          const combinedData = [{ yearResults, citizenshipResults }];
+
+          // Calling the "stateSettingCallback" function with the specified parameters.
+          stateSettingCallback(view, office, [combinedData][0]);
         })
         .catch(err => {
           console.error(err);
         });
     }
   }
+
   const clearQuery = (view, office) => {
     dispatch(resetVisualizationQuery(view, office));
   };
