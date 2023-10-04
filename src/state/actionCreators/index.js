@@ -8,12 +8,11 @@ import {
   SET_VISUALIZATION_DATA,
   SET_HEAT_MAP_YEARS,
   RESET_VISUALIZATION_QUERY,
-  SET_DATE_FILTER_FORMAT,
 } from '../actionTypes';
 
 export const setVisualizationData = (view, office, data) => {
   return {
-    type: SET_VISUALIZATION_DATA, // Mock
+    type: SET_VISUALIZATION_DATA,
     payload: {
       view,
       office,
@@ -32,18 +31,9 @@ export const resetVisualizationQuery = (view, office) => {
   };
 };
 
-export const setYears = years => {
-  return {
-    type: SET_DATE_FILTER_FORMAT,
-    payload: {
-      years,
-    },
-  };
-};
-
 export const setHeatMapYears = (view, office, idx, year) => {
   return {
-    type: SET_HEAT_MAP_YEARS, // Mock
+    type: SET_HEAT_MAP_YEARS,
     payload: {
       view,
       office,

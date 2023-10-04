@@ -9,10 +9,7 @@ import TimeSeriesSingleOffice from './Graphs/TimeSeriesSingleOffice';
 import YearLimitsSelect from './YearLimitsSelect';
 import ViewSelect from './ViewSelect';
 import axios from 'axios';
-import {
-  resetVisualizationQuery,
-  setYears,
-} from '../../../state/actionCreators';
+import { resetVisualizationQuery } from '../../../state/actionCreators';
 // Removed test_data, as we are out of dev mode
 import { colors } from '../../../styles/data_vis_colors';
 import ScrollToTopOnMount from '../../../utils/scrollToTopOnMount';
@@ -59,6 +56,64 @@ function GraphWrapper(props) {
     office,
     stateSettingCallback
   ) {
+    /*
+          _                                                                             _
+        |                                                                                 |
+        |   Example request for once the `/summary` endpoint is up and running:           |
+        |                                                                                 |
+        |     `${url}/summary?to=2022&from=2015&office=ZLA`                               |
+        |                                                                                 |
+        |     so in axios we will say:                                                    |
+        |                                                                                 |     
+        |       axios.get(`${url}/summary`, {                                             |
+        |         params: {                                                               |
+        |           from: <year_start>,                                                   |
+        |           to: <year_end>,                                                       |
+        |           office: <office>,       [ <-- this one is optional! when    ]         |
+        |         },                        [ querying by `all offices` there's ]         |
+        |       })                          [ no `office` param in the query    ]         |
+        |                                                                                 |
+          _                                                                             _
+                                   -- Mack 
+    
+    */
+
+    //   if (office === 'all' || !office) {
+    //     axios
+    //       .get(`https://hrf-asylum-be-b.herokuapp.com/cases/fiscalSummary`, {
+    //         // Changed mock URL, process.env.REACT_APP_API_URI, to ${Real_Production_URL}/summary
+    //         params: {
+    //           from: years[0],
+    //           to: years[1],
+    //         },
+    //       })
+    //       .then(result => {
+    //         // Removed stateSettingCallback statement in preference of the following:
+    //         const yearResults = result.data.yearResults;
+    //       })
+    //       .catch(err => {
+    //         console.error(err);
+    //       });
+    //   // } else {
+    //     axios
+    //       .get(`https://hrf-asylum-be-b.herokuapp.com/cases/citizenshipSummary`, {
+    //         // Changed mock URL, process.env.REACT_APP_API_URI, to ${Real_Production_URL}/summary
+    //         params: {
+    //           from: years[0],
+    //           to: years[1],
+    //           office: office,
+    //         },
+    //       })
+    //       .then(result => {
+    //         // Removed stateSettingCallback statement in preference of the following:
+    //         const citizenshipResults = result.data;
+    //       })
+    //       .catch(err => {
+    //         console.error(err);
+    //       });
+    //   }
+    // }
+    // const combineData =
     const URL = 'https://hrf-asylum-be-b.herokuapp.com/cases';
 
     if (office === 'all' || !office) {
@@ -97,14 +152,10 @@ function GraphWrapper(props) {
         });
     }
   }
-
   const clearQuery = (view, office) => {
     dispatch(resetVisualizationQuery(view, office));
   };
-  // Created updateYears function to dispatch setYears action to update the state with the new years
-  const updateYears = (start, end) => {
-    dispatch(setYears(start, end));
-  };
+
   return (
     <div
       className="map-wrapper-container"
@@ -134,7 +185,6 @@ function GraphWrapper(props) {
           office={office}
           clearQuery={clearQuery}
           updateStateWithNewData={updateStateWithNewData}
-          updateYears={updateYears}
         />
       </div>
     </div>
