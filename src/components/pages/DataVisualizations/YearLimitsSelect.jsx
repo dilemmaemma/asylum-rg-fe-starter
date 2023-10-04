@@ -1,3 +1,18 @@
+// Changes Made to File:
+/*
+          _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _
+        |                                                                                 |
+        |                                                                                 |
+        |   Commented back in Input import from antd                                      |
+        |   Commented back in setHeatMapYears import from actionCreators                  |
+        |   Commented back in yearInputsOnChange function                                 |
+        |   Commented back in YearLimitsSlider component                                  |
+        |   Commented back in form                                                        |
+        |                                                                                 |              
+          _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _
+                                   -- Emma 
+    
+    */
 import React, { useEffect } from 'react';
 import { Form, Button, Input } from 'antd';
 import {
@@ -52,8 +67,15 @@ const mapStateToProps = (state, ownProps) => {
 };
 
 function YearLimitsSelect(props) {
-  let { view, office, dispatch, clearQuery, updateStateWithNewData, years } =
-    props;
+  let {
+    view,
+    office,
+    dispatch,
+    clearQuery,
+    updateYears,
+    updateStateWithNewData,
+    years,
+  } = props;
   const yearInputsOnChange = (view, office, e) => {
     dispatch(
       setHeatMapYears(
@@ -167,6 +189,9 @@ function YearLimitsSelect(props) {
               color: 'white',
               marginLeft: '105px',
               marginTop: '10px',
+            }}
+            onClick={() => {
+              updateYears(years);
             }}
           >
             Update Query

@@ -9,7 +9,10 @@ import TimeSeriesSingleOffice from './Graphs/TimeSeriesSingleOffice';
 import YearLimitsSelect from './YearLimitsSelect';
 import ViewSelect from './ViewSelect';
 import axios from 'axios';
-import { resetVisualizationQuery } from '../../../state/actionCreators';
+import {
+  resetVisualizationQuery,
+  setYears,
+} from '../../../state/actionCreators';
 // Removed test_data, as we are out of dev mode
 import { colors } from '../../../styles/data_vis_colors';
 import ScrollToTopOnMount from '../../../utils/scrollToTopOnMount';
@@ -75,7 +78,7 @@ function GraphWrapper(props) {
 
     if (office === 'all' || !office) {
       axios
-        .get(`https://hrf-asylum-be-b.herokuapp.com/cases/citizenshipSummary`, {
+        .get(`https://hrf-asylum-be-b.herokuapp.com/cases/fiscalSummary`, {
           // Changed mock URL, process.env.REACT_APP_API_URI, to ${Real_Production_URL}/summary
           params: {
             from: years[0],
@@ -90,7 +93,7 @@ function GraphWrapper(props) {
         });
     } else {
       axios
-        .get(`https://hrf-asylum-be-b.herokuapp.com/cases/fiscalSummary`, {
+        .get(`https://hrf-asylum-be-b.herokuapp.com/cases/citizenshipSummary`, {
           // Changed mock URL, process.env.REACT_APP_API_URI, to ${Real_Production_URL}/summary
           params: {
             from: years[0],
@@ -108,6 +111,10 @@ function GraphWrapper(props) {
   }
   const clearQuery = (view, office) => {
     dispatch(resetVisualizationQuery(view, office));
+  };
+  // Created updateYears function to dispatch setYears action to update the state with the new years
+  const updateYears = (start, end) => {
+    dispatch(setYears(start, end));
   };
   return (
     <div
@@ -138,6 +145,7 @@ function GraphWrapper(props) {
           office={office}
           clearQuery={clearQuery}
           updateStateWithNewData={updateStateWithNewData}
+          updateYears={updateYears}
         />
       </div>
     </div>
