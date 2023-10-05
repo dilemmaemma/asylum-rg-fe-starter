@@ -1,6 +1,6 @@
 import 'bootstrap/dist/css/bootstrap.min.css';
-import Login_Button from '../Auth0/Login_Button';
-import Logout_Button from '../Auth0/Logout_Button';
+import LoginButton from '../Auth0/LoginButton';
+import LogoutButton from '../Auth0/LogoutButton';
 import React from 'react';
 import axios from 'axios';
 // ADD IMPORTS BACK FOR GRAPHS SECTION
@@ -82,6 +82,8 @@ function RenderLandingPage(props) {
             researchers, policymakers, and the public an interactive tool to
             explore USCIS data on Asylum Office decisions
           </h3>
+          <LoginButton />
+          <LogoutButton />
         </div>
       </div>
 
