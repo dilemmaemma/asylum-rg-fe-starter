@@ -1,6 +1,6 @@
 import 'bootstrap/dist/css/bootstrap.min.css';
-import LoginButton from '../Auth0/LoginButton';
-import LogoutButton from '../Auth0/LogoutButton';
+import LoginButton from '../Auth0/Login_Button';
+import LogoutButton from '../Auth0/Logout_Button';
 import React from 'react';
 import axios from 'axios';
 // ADD IMPORTS BACK FOR GRAPHS SECTION

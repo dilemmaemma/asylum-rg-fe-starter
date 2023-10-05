@@ -29,12 +29,11 @@ const store = configureStore({ reducer: reducer });
 ReactDOM.render(
   <Router>
     <Provider store={store}>
-      {/* Start of the Auth0Provider component with authentication configuration */}
+      {/* Set up the Auth0Provider component with authentication via the auth0 web app */}
       <Auth0Provider
         domain={process.env.REACT_APP_DOMAIN} // Auth0 domain
         clientId={process.env.REACT_APP_CLIENT_ID} // Auth0 client ID
         authorizationParams={{
-          // Additional authorization parameters
           redirect_uri: window.location.origin, // Redirect URI after authentication
         }}
       >
