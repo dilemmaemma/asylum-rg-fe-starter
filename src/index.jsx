@@ -35,7 +35,7 @@ ReactDOM.render(
         clientId={`${process.env.REACT_APP_CLIENT_ID}`} // Auth0 client ID
         authorizationParams={{
           // Additional authorization parameters
-          redirect_uri: window.location.origin, // Redirect URI after authentication
+          redirectUri: window.location.origin, // Redirect URI after authentication
         }}
       >
         <React.StrictMode>
