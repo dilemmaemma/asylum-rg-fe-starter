@@ -6,11 +6,11 @@ import {
   // useHistory,
   Switch,
 } from 'react-router-dom';
-
+import Profile from './components/pages/Auth0/Profile';
 import 'antd/dist/antd.less';
 import { NotFoundPage } from './components/pages/NotFound';
 import { LandingPage } from './components/pages/Landing';
-
+import { Auth0Provider, useAuth0 } from '@auth0/auth0-react';
 import { FooterContent, SubFooter } from './components/Layout/Footer';
 import { HeaderContent } from './components/Layout/Header';
 
@@ -29,9 +29,19 @@ const store = configureStore({ reducer: reducer });
 ReactDOM.render(
   <Router>
     <Provider store={store}>
-      <React.StrictMode>
-        <App />
-      </React.StrictMode>
+      {/* Start of the Auth0Provider component with authentication configuration */}
+      <Auth0Provider
+        domain={`${process.env.REACT_APP_DOMAIN}`} // Auth0 domain
+        clientId={`${process.env.REACT_APP_CLIENT_ID}`} // Auth0 client ID
+        authorizationParams={{
+          // Additional authorization parameters
+          redirect_uri: window.location.origin, // Redirect URI after authentication
+        }}
+      >
+        <React.StrictMode>
+          <App />
+        </React.StrictMode>
+      </Auth0Provider>
     </Provider>
   </Router>,
   document.getElementById('root')
@@ -39,6 +49,8 @@ ReactDOM.render(
 
 export function App() {
   const { Footer, Header } = Layout;
+  const { isAuthenticated } = useAuth0();
+
   return (
     <Layout>
       <Header
@@ -54,6 +66,8 @@ export function App() {
       <Switch>
         <Route path="/" exact component={LandingPage} />
         <Route path="/graphs" component={GraphsContainer} />
+        {/*  create a route to the profile link only if user is logged in */}
+        {isAuthenticated && <Route path="/profile" component={Profile} />}
         <Route component={NotFoundPage} />
       </Switch>
       <Footer
