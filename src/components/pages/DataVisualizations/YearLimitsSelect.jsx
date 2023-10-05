@@ -8,6 +8,7 @@
         |   Commented back in yearInputsOnChange function                                 |
         |   Commented back in YearLimitsSlider component                                  |
         |   Commented back in form                                                        |
+        |   Got rid of center alignment of buttons                                        |
         |                                                                                 |              
           _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _
                                    -- Emma 
@@ -131,7 +132,6 @@ function YearLimitsSelect(props) {
         style={{
           display: 'flex',
           flexDirection: 'column',
-          alignItems: 'center',
         }}
       >
         <Form.Item
