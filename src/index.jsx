@@ -31,11 +31,11 @@ ReactDOM.render(
     <Provider store={store}>
       {/* Start of the Auth0Provider component with authentication configuration */}
       <Auth0Provider
-        domain={`${process.env.REACT_APP_DOMAIN}`} // Auth0 domain
-        clientId={`${process.env.REACT_APP_CLIENT_ID}`} // Auth0 client ID
+        domain={process.env.REACT_APP_DOMAIN} // Auth0 domain
+        clientId={process.env.REACT_APP_CLIENT_ID} // Auth0 client ID
         authorizationParams={{
           // Additional authorization parameters
-          redirectUri: window.location.origin, // Redirect URI after authentication
+          redirect_uri: window.location.origin, // Redirect URI after authentication
         }}
       >
         <React.StrictMode>
