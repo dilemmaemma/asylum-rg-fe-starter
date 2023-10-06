@@ -122,7 +122,7 @@ function RenderLandingPage(props) {
         <div className="view-more-data-btn-container">
           <Button
             type="default"
-            style={style}
+            style={{ ...style, marginLeft: !isAuthenticated ? '70%' : null }}
             onClick={() => history.push('/graphs')}
           >
             View the Data
