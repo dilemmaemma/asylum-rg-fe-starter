@@ -194,8 +194,10 @@ function RenderLandingPage(props) {
             <Button
               type="default"
               style={style}
-              // This button should not take the user anywhere yet, so the onClick is commented out
-              // onClick={() => history.push('/graphs')}
+              onClick={() =>
+                (window.location.href =
+                  'https://humanrightsfirst.org/about-us/')
+              }
             >
               Read More
             </Button>
