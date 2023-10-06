@@ -35,7 +35,7 @@ function HeaderContent() {
             to="/profile"
             style={{
               color: '#E2F0F7',
-              paddingRight: isAuthenticated ? '75px' : '0',
+              paddingLeft: isAuthenticated ? '75px' : '0',
             }}
           >
             Profile

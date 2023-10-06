@@ -8,7 +8,11 @@ const LoginButton = () => {
     <button
       className="btn"
       style={{ marginRight: '75px' }}
-      onClick={() => loginWithRedirect()}
+      onClick={() =>
+        loginWithRedirect({
+          redirectUri: window.location.origin,
+        })
+      }
     >
       Log In
     </button>
