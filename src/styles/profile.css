@@ -1,0 +1,35 @@
+.profile-container {
+    display: flex;
+    flex-direction: column;
+    margin-top: 5%;
+    margin-left: 5%;
+    margin-bottom: 5%;
+}
+
+.profile-info {
+    margin-left: 3%;
+    margin-top: 1%;
+    display: inline-flex;
+}
+
+.profile-info-text {
+    font-family: 'moneta';
+    font-size: 20px;
+    font-weight: 500;
+    margin-left: 5%;
+}
+
+.circle-image {
+    display: flex;
+    flex-direction: row;
+    width: 8%;
+    height: 8%;
+    overflow: hidden;
+    border-radius: 50%;
+}
+
+.circle-image img {
+    width: 100%;
+    height: auto;
+    display: block;
+}
